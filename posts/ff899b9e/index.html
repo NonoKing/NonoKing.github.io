@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/128x128.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nonoking.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="背景无意间发现GitHub可以提供一个免费的域名，就是个人用户名.github.io 而且使用Hexo框架来搭建个人博客，简单容易上手，所以准备使用Hexo 从本文开始，我将记录自己建站的全部过程，也相当于是一个保姆级别的建站教程 废话不多说，let’s go!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始搭建个人博客（一）">
+<meta property="og:url" content="http://nonoking.github.io/posts/ff899b9e/index.html">
+<meta property="og:site_name" content="nono&#39;s blog">
+<meta property="og:description" content="背景无意间发现GitHub可以提供一个免费的域名，就是个人用户名.github.io 而且使用Hexo框架来搭建个人博客，简单容易上手，所以准备使用Hexo 从本文开始，我将记录自己建站的全部过程，也相当于是一个保姆级别的建站教程 废话不多说，let’s go!">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/1.png?token=AIAYJLDEV3ANDQPH6V3LH3C7UEAU4">
+<meta property="og:image" content="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/2.png?token=AIAYJLEGYDQND66LTSPKMBK7UEANE">
+<meta property="og:image" content="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/3.png?token=AIAYJLASOEF3IZ26C7LNAT27UEAPM">
+<meta property="og:image" content="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/4.png?token=AIAYJLDKMQEE7AURAMA6SQK7UEARA">
+<meta property="article:published_time" content="2020-10-15T07:32:51.000Z">
+<meta property="article:modified_time" content="2020-11-03T07:07:19.162Z">
+<meta property="article:author" content="Nono King">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/1.png?token=AIAYJLDEV3ANDQPH6V3LH3C7UEAU4">
+
+<link rel="canonical" href="http://nonoking.github.io/posts/ff899b9e/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>从零开始搭建个人博客（一） | nono's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">nono's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A little effort everyday, you will make a big difference</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://nonoking.github.io/posts/ff899b9e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Nono King">
+      <meta itemprop="description" content="一步一个脚印，聚沙成塔，厚积薄发">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nono's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零开始搭建个人博客（一）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-15 15:32:51" itemprop="dateCreated datePublished" datetime="2020-10-15T15:32:51+08:00">2020-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-03 15:07:19" itemprop="dateModified" datetime="2020-11-03T15:07:19+08:00">2020-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+            <!--span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv"-->
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>639字</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>无意间发现GitHub可以提供一个免费的域名，就是<strong>个人用户名.github.io</strong></p>
+<p>而且使用Hexo框架来搭建个人博客，简单容易上手，所以准备使用Hexo</p>
+<p>从本文开始，我将记录自己建站的全部过程，也相当于是一个<strong>保姆级别</strong>的建站教程</p>
+<p>废话不多说，let’s go!</p>
+<hr>
+<a id="more"></a>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p>Windows 10 64位<br>这个其实不怎么影响</p>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p><a target="_blank" rel="noopener" href="https://gitforwindows.org/">Git for windows</a><br>当然使用自带的PowerShell也是可以的</p>
+<p>但是记得要<strong>以管理员身份运行</strong>以免会有一些权限问题</p>
+<h3 id="nods-js"><a href="#nods-js" class="headerlink" title="nods.js"></a>nods.js</h3><p>接下来，去<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">node.js官网</a>下载并安装<br>以支持npm指令</p>
+<h2 id="Github配置"><a href="#Github配置" class="headerlink" title="Github配置"></a>Github配置</h2><h3 id="账号"><a href="#账号" class="headerlink" title="账号"></a>账号</h3><p>你需要准备一个GitHub的账号，没有的话，就去<a target="_blank" rel="noopener" href="https://github.com/join">注册一个</a><br>其中username就是上述提到的 个人用户名</p>
+<p>如果你发现访问官网的速度很慢，可以参考<a href="/posts/d5eaf3e2/index.html">上一篇文章</a>来提高访问速度，以及git clone和git push的速度</p>
+<h3 id="ssh设置"><a href="#ssh设置" class="headerlink" title="ssh设置"></a>ssh设置</h3><p><img src="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/1.png?token=AIAYJLDEV3ANDQPH6V3LH3C7UEAU4" alt="avatar"><br>点击右上角头像，在下拉菜单中选择<strong>Settings</strong></p>
+<p><img src="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/2.png?token=AIAYJLEGYDQND66LTSPKMBK7UEANE" alt="avatar"><br>在左侧的菜单中选择<strong>SSH and GPG keys</strong></p>
+<p><img src="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/3.png?token=AIAYJLASOEF3IZ26C7LNAT27UEAPM" alt="avatar"><br>然后再右侧选择<strong>New SSH key</strong></p>
+<p><img src="https://raw.githubusercontent.com/NonoKing/BlogPictures/master/picture/ff899b9e/4.png?token=AIAYJLDKMQEE7AURAMA6SQK7UEARA" alt="avatar"><br>在title栏填写该key的名称，用这个没什么影响，一般来区分不同的电脑<br>比如你想在自己的电脑上写博客，在实验室或者公司也想同步更新，那这里就可以写<br><strong>GitBash From xxx’s PC windows</strong> 或者 <strong>Shell from company Linux</strong> 之类的，总之可以随意写<br>为了之后在删除的时候，区分是哪个key</p>
+<p>在key这一栏需要填写用GitBash生成的 <strong>.ssh</strong> 文件中的内容</p>
+<h3 id="新建一个repo来测试"><a href="#新建一个repo来测试" class="headerlink" title="新建一个repo来测试"></a>新建一个repo来测试</h3><h2 id="下载Hexo"><a href="#下载Hexo" class="headerlink" title="下载Hexo"></a>下载Hexo</h2><hr>
+<h2 id="先写到这里"><a href="#先写到这里" class="headerlink" title="先写到这里"></a>先写到这里</h2><p>回去再更</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>本博客将持续分享，感谢您的支持与来访！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Nono King 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Nono King 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+      </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/d5eaf3e2/" rel="prev" title="解决Github访问速度慢的问题">
+      <i class="fa fa-chevron-left"></i> 解决Github访问速度慢的问题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.1.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">2.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nods-js"><span class="nav-number">2.3.</span> <span class="nav-text">nods.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Github配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7"><span class="nav-number">3.1.</span> <span class="nav-text">账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">ssh设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AArepo%E6%9D%A5%E6%B5%8B%E8%AF%95"><span class="nav-number">3.3.</span> <span class="nav-text">新建一个repo来测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDHexo"><span class="nav-number">4.</span> <span class="nav-text">下载Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%86%99%E5%88%B0%E8%BF%99%E9%87%8C"><span class="nav-number">5.</span> <span class="nav-text">先写到这里</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Nono King"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Nono King</p>
+  <div class="site-description" itemprop="description">一步一个脚印，聚沙成塔，厚积薄发</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nonoKing" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nonoKing" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bihao.qing@foxmail.com" title="E-Mail → mailto:bihao.qing@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=34518650&auto=1&height=430"></iframe>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nonoKing</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+
+    <span title="站点总字数">1k字</span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!--span class="post-meta-item" id="busuanzi_container_site_uv" style="display: true;"-->
+    <span>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        总访客量
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <!--span class="post-meta-item" id="busuanzi_container_site_pv" style="display: true;"-->
+    <span>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        总访问量
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '582623c6cf3a6cf2718e',
+      clientSecret: '0037c3c7aca95845e67e3a90eba197eeb45863f6',
+      repo        : 'BlogComment',
+      owner       : 'NonoKing',
+      admin       : ['NonoKing'],
+      id          : 'ed7e08b5a701764d25b7500489fafc01',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+<!-- 页面点击颜文字 -->
+<script type="text/javascript" src="/js/src/clickBubble.js"></script>
